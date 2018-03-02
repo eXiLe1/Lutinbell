@@ -1,12 +1,74 @@
-﻿<Window x:Class="Lutinbell_Manager.MainWindow"
+﻿<Controls:MetroWindow x:Class="Lutinbell_Manager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lutinbell_Manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:viewmodels="clr-namespace:Lutinbell_Manager.ViewModels"
+        xmlns:views="clr-namespace:Lutinbell_Manager.Views"
+        Title="MainWindow" 
+        WindowState="Maximized"
+        ShowIconOnTitleBar="True" 
+        BorderBrush="{DynamicResource AccentColorBrush}" 
+        BorderThickness="1"
+        ResizeMode="CanResizeWithGrip" 
+        RightWindowCommandsOverlayBehavior="Never">
+
+    <Window.Resources>
+        <DataTemplate x:Name="HomeViewTempate" DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:Home DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="SettingsViewTemplate" DataType="{x:Type viewmodels:WebsiteViewModel}">
+            <views:Settings DataContext="{Binding}" />
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="Settings" />
+            <Button Content="Help" />
+            <ToggleButton Content="Menu" 
+        IsChecked="{Binding ElementName=Flyout, Path=IsOpen}" Cursor="Hand"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout x:Name="Flyout" Position="Right" Width="200" AnimateOnPositionChange="True" >
+                <TextBlock FontSize="24">Hello World</TextBlock>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="MenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Options"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel DockPanel.Dock="Top" Background="{DynamicResource AccentColorBrush4}" Height="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
+                    <Button Content="Home" Style="{StaticResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Home_Click"/>
+                    <Button Content="Website" Style="{StaticResource AccentedSquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Website_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                    <ToggleButton Content="Menu" Style="{DynamicResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" IsChecked="{Binding ElementName=Flyout, Path=IsOpen}" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <Controls:TransitioningContentControl x:Name="ContentControl" Transition="Default" Content="{Binding}" />
+    </DockPanel>
+</Controls:MetroWindow>

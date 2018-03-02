@@ -5,16 +5,42 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lutinbell Manager", "Lutinbell Manager\Lutinbell Manager.csproj", "{EE516D4A-A1F8-4918-957B-CE75C3564D98}"
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "LutinbellSetup", "LutinbellSetup\LutinbellSetup.aiproj", "{A5C3AE6C-F429-46A2-A209-B379212EB664}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		DefaultBuild|Any CPU = DefaultBuild|Any CPU
+		DefaultBuild|x86 = DefaultBuild|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Debug|x86.Build.0 = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.DefaultBuild|x86.Build.0 = Debug|Any CPU
 		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE516D4A-A1F8-4918-957B-CE75C3564D98}.Release|x86.Build.0 = Release|Any CPU
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Debug|Any CPU.Build.0 = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Debug|x86.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Debug|x86.Build.0 = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.DefaultBuild|x86.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.DefaultBuild|x86.Build.0 = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Release|Any CPU.Build.0 = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Release|x86.ActiveCfg = DefaultBuild
+		{A5C3AE6C-F429-46A2-A209-B379212EB664}.Release|x86.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

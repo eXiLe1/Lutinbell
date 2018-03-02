@@ -19,12 +19,30 @@
             <Setter Property="TitleFontSize" Value="10" />
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <WrapPanel Width="620" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Controls:Tile Title="Manage Reviews" Style="{StaticResource LargeTileStyle}" Background="LimeGreen" />
-            <Controls:Tile Title="Images" Style="{StaticResource LargeTileStyle}" Background="DarkViolet" />
-            <Controls:Tile Title="Page Content" Style="{StaticResource LargeTileStyle}" Background="Red" />
-            <Controls:Tile Title="Contact Information" Style="{StaticResource LargeTileStyle}" Background="DeepSkyBlue" />
-        </WrapPanel>
-    </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="18*" />
+                <ColumnDefinition Width="35*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="83*" />
+                <RowDefinition Height="259*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Text="Website Management"
+                       FontWeight="Light"
+                       Foreground="{DynamicResource BlackBrush}"
+                       FontSize="30"
+                       FontFamily="Segoe UI" Grid.ColumnSpan="2" Margin="0,11" />
+            <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                <Controls:Tile Title="Manage Reviews" Style="{StaticResource LargeTileStyle}" Background="LimeGreen" />
+                <Controls:Tile Title="Images" Style="{StaticResource LargeTileStyle}" Background="DarkViolet" />
+                <Controls:Tile Title="Page Content" Style="{StaticResource LargeTileStyle}" Background="Red" />
+                <Controls:Tile Title="Contact Information" Style="{StaticResource LargeTileStyle}" Background="DeepSkyBlue" />
+            </WrapPanel>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

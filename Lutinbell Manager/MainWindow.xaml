@@ -24,33 +24,24 @@
         <DataTemplate x:Name="SettingsViewTemplate" DataType="{x:Type viewmodels:WebsiteViewModel}">
             <views:Settings DataContext="{Binding}" />
         </DataTemplate>
-
     </Window.Resources>
-    
+
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Content="Settings" />
+            <Button x:Name="DatabaseStatusButton" Content="Database" Click="DatabaseStatusButton_Click" Cursor="Hand" ToolTip="Click to check connection" />
             <Button Content="Help" />
             <ToggleButton Content="Menu" 
         IsChecked="{Binding ElementName=Flyout, Path=IsOpen}" Cursor="Hand"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
-    <Controls:MetroWindow.Flyouts>
-        <Controls:FlyoutsControl>
-            <Controls:Flyout x:Name="Flyout" Position="Right" Width="200" AnimateOnPositionChange="True" >
-                <TextBlock FontSize="24">Hello World</TextBlock>
-            </Controls:Flyout>
-        </Controls:FlyoutsControl>
-    </Controls:MetroWindow.Flyouts>
-    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Exit" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Tools">
-                <MenuItem Header="_Options"/>
+                <MenuItem Header="_Options" Click="Options_Click"/>
             </MenuItem>
         </Menu>
         <StackPanel DockPanel.Dock="Top" Background="{DynamicResource AccentColorBrush4}" Height="40">
@@ -60,11 +51,9 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
-                    <Button Content="Home" Style="{StaticResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Home_Click"/>
-                    <Button Content="Website" Style="{StaticResource AccentedSquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Website_Click" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-                    <ToggleButton Content="Menu" Style="{DynamicResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" IsChecked="{Binding ElementName=Flyout, Path=IsOpen}" />
+                    <Button Content="Home" Style="{StaticResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Home_Click"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

@@ -5,19 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lutinbell_Manager.Views"
              mc:Ignorable="d" 
-             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
     <UserControl.Resources>
         <Style x:Key="LargeTileStyle" TargetType="Controls:Tile">
-            <Setter Property="Width" Value="300" />
-            <Setter Property="Height" Value="125" />
-            <Setter Property="TitleFontSize" Value="10" />
+            <Setter Property="Width" Value="320" />
+            <Setter Property="Height" Value="135" />
+            <Setter Property="TitleFontSize" Value="18" />
         </Style>
 
         <Style x:Key="SmallTileStyle" TargetType="Controls:Tile">
-            <Setter Property="Width" Value="147" />
-            <Setter Property="Height" Value="125" />
-            <Setter Property="TitleFontSize" Value="10" />
+            <Setter Property="Width" Value="157" />
+            <Setter Property="Height" Value="135" />
+            <Setter Property="TitleFontSize" Value="18" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -29,14 +28,17 @@
             <RowDefinition Height="83*"/>
             <RowDefinition Height="259*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="1" Grid.Column="1" Width="940" Height="382" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Controls:Tile Title="Mail" Style="{StaticResource LargeTileStyle}" Content="ImageHere" Background="Teal" Margin="3"/>
-            <Controls:Tile Title="Desktop" Style="{StaticResource LargeTileStyle}"  Margin="3"/>
-            <Controls:Tile Title="Finance" Style="{StaticResource LargeTileStyle}" Background="Green" />
-            <Controls:Tile Title="People" Style="{StaticResource LargeTileStyle}" Background="#D2691E" />
-            <Controls:Tile Title="Weather" Style="{StaticResource LargeTileStyle}" Background="#1E90FF" />
-            <Controls:Tile Title="Weather" Style="{StaticResource SmallTileStyle}" Background="#1E90FF" />
-            <Controls:Tile Title="Store" Style="{StaticResource SmallTileStyle}" Background="Green" />
+        <WrapPanel Grid.Row="1" Grid.Column="1" Width="1350" Height="455" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Controls:Tile Title="Tasks" Style="{StaticResource LargeTileStyle}" Background="#33cc33" Margin="3"/>
+            <Controls:Tile Title="Finances" Style="{StaticResource LargeTileStyle}"  Margin="3" Background="#33ccff"/>
+            <Controls:Tile Title="Cloud" Style="{StaticResource LargeTileStyle}" Background="#33cc33" />
+            <Controls:Tile Title="Reviews" Style="{StaticResource SmallTileStyle}" Background="#00cc99" />
+            <Controls:Tile Title="Images" Style="{StaticResource SmallTileStyle}" Background="#ff6600" />
+            <Controls:Tile Title="Customers" Style="{StaticResource LargeTileStyle}" Background="#ffcc00" />
+            <Controls:Tile Title="Manage Costs" Style="{StaticResource SmallTileStyle}" Background="#cc00ff" />
+            <Controls:Tile Title="Manage Prices" Style="{StaticResource SmallTileStyle}" Background="#1E90FF" />
+            <Controls:Tile Title="Bookings" Style="{StaticResource LargeTileStyle}" Background="#ff0066" />
+            <Controls:Tile Title="Website" Style="{StaticResource LargeTileStyle}" Background="#990099" Click="WebsiteTile_Click" />
         </WrapPanel>
     </Grid>
 </UserControl>

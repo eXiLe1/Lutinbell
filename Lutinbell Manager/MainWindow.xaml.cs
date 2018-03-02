@@ -13,20 +13,77 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Lutinbell_Manager.ViewModels;
+using Lutinbell_Manager.Windows;
+using Lutinbell_Manager.Class;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Lutinbell_Manager
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : MetroWindow
     {
+        private static MainWindow Window;
+
         public MainWindow()
         {
             InitializeComponent();
+            Window = this;
+            InitializeInterface();
         }
 
+        private void InitializeInterface()
+        {
+            DataContext = new HomeViewModel();
+            Log.NewLog();
+            if (Properties.Settings.Default.AdvancedLoggingEnabled)
+            {
+                Log.Commit("[Program] Loaded.");
+            }
+            if (Properties.Settings.Default.DatabaseConnectionString != "")
+            {
+                if(Database.Refresh())
+                {
+                    SetDatabaseStatus(true);
+                }
+                else
+                {
+                    SetDatabaseStatus(false);
+                }
+            }
+            else
+            {
+                SetDatabaseStatus(false);
+            }
+        }
+
+        public void SetDatabaseStatus(bool Status)
+        {
+            if (Status)
+            {
+                DatabaseStatusButton.Foreground = Brushes.LimeGreen;
+            }
+            else
+            {
+                DatabaseStatusButton.Foreground = Brushes.Red;
+            }
+        }
+
+        public static void SetDataContext(string Context)
+        {
+            switch(Context)
+            {
+                case "WebsiteViewModel":
+                    Window.DataContext = new WebsiteViewModel();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #region XAML
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -37,9 +94,23 @@ namespace Lutinbell_Manager
             DataContext = new HomeViewModel();
         }
 
-        private void Website_Click(object sender, RoutedEventArgs e)
+        private void Options_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new WebsiteViewModel();
+            Options options = new Options();
+            options.Show();
         }
+
+        private void DatabaseStatusButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Database.Refresh())
+            {
+                SetDatabaseStatus(true);
+            }
+            else
+            {
+                SetDatabaseStatus(false);
+            }
+        }
+        #endregion
     }
 }

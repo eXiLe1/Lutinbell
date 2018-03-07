@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Lutinbell_Manager.ViewModels.Website;
 
-namespace Lutinbell_Manager.Views
+namespace Lutinbell_Manager.Views.Website
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for Test.xaml
     /// </summary>
-    public partial class WebsiteHost : UserControl
+    public partial class Test : UserControl
     {
-        public WebsiteHost()
+        public Test()
         {
             InitializeComponent();
-            DataContext = new WebsiteNavigationViewModel();
         }
     }
 }

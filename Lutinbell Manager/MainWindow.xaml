@@ -18,12 +18,26 @@
         RightWindowCommandsOverlayBehavior="Never">
 
     <Window.Resources>
-        <DataTemplate x:Name="HomeViewTempate" DataType="{x:Type viewmodels:HomeViewModel}">
-            <views:Home DataContext="{Binding}" />
-        </DataTemplate>
-        <DataTemplate x:Name="SettingsViewTemplate" DataType="{x:Type viewmodels:WebsiteViewModel}">
-            <views:Settings DataContext="{Binding}" />
-        </DataTemplate>
+        <ResourceDictionary>
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type Controls:HamburgerMenuIconItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Icon}"
+                                    Focusable="False"
+                                    IsTabStop="False" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Controls:MetroWindow.RightWindowCommands>
@@ -44,20 +58,73 @@
                 <MenuItem Header="_Options" Click="Options_Click"/>
             </MenuItem>
         </Menu>
-        <StackPanel DockPanel.Dock="Top" Background="{DynamicResource AccentColorBrush4}" Height="40">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0">
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-                    <Button Content="Home" Style="{StaticResource SquareButtonStyle}" Width="80" Margin="10 5 10 5" Click="Home_Click"/>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
 
-        <Controls:TransitioningContentControl x:Name="ContentControl" Transition="Default" Content="{Binding}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                BorderThickness="1">
+                <Controls:HamburgerMenu x:Name="SideMenu"
+                            ItemClick="SideMenu_ItemClick"
+                            OptionsItemClick="SideMenu_OptionsItemClick"
+                            ItemTemplate="{StaticResource MenuItemTemplate}"
+                            OptionsItemTemplate="{StaticResource MenuItemTemplate}"
+                            DisplayMode="CompactInline">
+                    <Controls:HamburgerMenu.ItemsSource>
+                        <Controls:HamburgerMenuItemCollection>
+
+                            <Controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Web}" Label="Website" >
+                                <Controls:HamburgerMenuIconItem.Tag>
+                                    <Controls:TransitioningContentControl Transition="LeftReplace">
+                                        <views:WebsiteHost Margin="0 10 0 0"/>
+                                    </Controls:TransitioningContentControl>
+                                </Controls:HamburgerMenuIconItem.Tag>
+                            </Controls:HamburgerMenuIconItem>
+
+                        </Controls:HamburgerMenuItemCollection>
+                    </Controls:HamburgerMenu.ItemsSource>
+
+                    <!--  Content  -->
+                    <Controls:HamburgerMenu.ContentTemplate>
+                        <DataTemplate DataType="{x:Type Controls:HamburgerMenuIconItem}">
+                            <Grid Margin="20 0 10 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0"
+                                       Margin="0 15 0 5"
+                                       Padding="0"
+                                       FontFamily="{DynamicResource HeaderFontFamily}"
+                                       FontSize="{DynamicResource HeaderFontSize}"
+                                       Text="{Binding Label}" />
+                                <ScrollViewer Grid.Row="1"
+                                          Focusable="False"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Auto">
+                                    <ContentControl Content="{Binding Tag}" Focusable="False" />
+                                </ScrollViewer>
+                            </Grid>
+                        </DataTemplate>
+                    </Controls:HamburgerMenu.ContentTemplate>
+
+                    <!--  Options  -->
+                    <Controls:HamburgerMenu.OptionsItemsSource>
+                        <Controls:HamburgerMenuItemCollection>
+                            <Controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Home}" Label="Home">
+                                <Controls:HamburgerMenuIconItem.Tag>
+                                    <views:Home Margin="0 10 0 0" />
+                                </Controls:HamburgerMenuIconItem.Tag>
+                            </Controls:HamburgerMenuIconItem>
+                        </Controls:HamburgerMenuItemCollection>
+                    </Controls:HamburgerMenu.OptionsItemsSource>
+
+                </Controls:HamburgerMenu>
+            </Border>
+
+        </Grid>
     </DockPanel>
 </Controls:MetroWindow>

@@ -121,24 +121,41 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\Database.cs" />
+    <Compile Include="Class\DataClasses\Review.cs" />
     <Compile Include="Class\Log.cs" />
+    <Compile Include="Controls\SingleReviewControl.xaml.cs">
+      <DependentUpon>SingleReviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Website\WebsiteNavigationViewModel.cs" />
+    <Compile Include="ViewModels\Website\TestViewModel.cs" />
+    <Compile Include="ViewModels\Website\ReviewsViewModel.cs" />
+    <Compile Include="ViewModels\Website\WebsiteViewModel.cs" />
     <Compile Include="Views\Options\DatabaseOptions.xaml.cs">
       <DependentUpon>DatabaseOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Options\GeneralOptions.xaml.cs">
       <DependentUpon>GeneralOptions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Website\Reviews.xaml.cs">
+      <DependentUpon>Reviews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Website\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\WebsiteViewModel.cs" />
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WebsiteHost.xaml.cs">
       <DependentUpon>WebsiteHost.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\SingleReviewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +175,14 @@
     <Page Include="Views\Options\GeneralOptions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Website\Reviews.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Website\Test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Options.xaml">
       <SubType>Designer</SubType>
@@ -230,6 +255,7 @@
   <ItemGroup>
     <Resource Include="bin\Debug\Log.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

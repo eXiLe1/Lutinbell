@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lutinbell_Manager.ViewModels
+namespace Lutinbell_Manager.ViewModels.Website
 {
     class WebsiteViewModel
     {

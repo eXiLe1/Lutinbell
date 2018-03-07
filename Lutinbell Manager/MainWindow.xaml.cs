@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lutinbell_Manager.ViewModels.Website;
 using Lutinbell_Manager.ViewModels;
 using Lutinbell_Manager.Windows;
 using Lutinbell_Manager.Class;
@@ -110,6 +111,20 @@ namespace Lutinbell_Manager
             {
                 SetDatabaseStatus(false);
             }
+        }
+        private void SideMenu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // set the content
+            SideMenu.Content = e.ClickedItem;
+            // close the pane
+            SideMenu.IsPaneOpen = false;
+        }
+        private void SideMenu_OptionsItemClick(object sender, ItemClickEventArgs e)
+        {
+            // set the content
+            SideMenu.Content = e.ClickedItem;
+            // close the pane
+            SideMenu.IsPaneOpen = false;
         }
         #endregion
     }

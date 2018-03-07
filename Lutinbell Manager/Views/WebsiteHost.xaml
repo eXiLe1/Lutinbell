@@ -1,48 +1,64 @@
-﻿<UserControl x:Class="Lutinbell_Manager.Views.Settings"
+﻿<UserControl x:Class="Lutinbell_Manager.Views.WebsiteHost"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lutinbell_Manager.Views"
+             xmlns:local="clr-namespace:Lutinbell_Manager.Views.Website"
+             xmlns:viewmodels="clr-namespace:Lutinbell_Manager.ViewModels.Website"
              mc:Ignorable="d" 
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls">
     <UserControl.Resources>
         <Style x:Key="LargeTileStyle" TargetType="Controls:Tile">
-            <Setter Property="Width" Value="300" />
-            <Setter Property="Height" Value="125" />
-            <Setter Property="TitleFontSize" Value="20" />
+            <Setter Property="Width" Value="320" />
+            <Setter Property="Height" Value="135" />
+            <Setter Property="TitleFontSize" Value="18" />
         </Style>
-
         <Style x:Key="SmallTileStyle" TargetType="Controls:Tile">
-            <Setter Property="Width" Value="150" />
-            <Setter Property="Height" Value="125" />
-            <Setter Property="TitleFontSize" Value="10" />
+            <Setter Property="Width" Value="157" />
+            <Setter Property="Height" Value="135" />
+            <Setter Property="TitleFontSize" Value="18" />
         </Style>
+        <DataTemplate DataType="{x:Type viewmodels:TestViewModel}">
+            <local:Test />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ReviewsViewModel}">
+            <local:Reviews />
+        </DataTemplate>
     </UserControl.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="18*" />
-                <ColumnDefinition Width="35*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="83*" />
-                <RowDefinition Height="259*" />
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1"
-                       VerticalAlignment="Center"
-                       Text="Website Management"
-                       FontWeight="Light"
-                       Foreground="{DynamicResource BlackBrush}"
-                       FontSize="30"
-                       FontFamily="Segoe UI" Grid.ColumnSpan="2" Margin="0,11" />
-            <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-                <Controls:Tile Title="Manage Reviews" Style="{StaticResource LargeTileStyle}" Background="LimeGreen" />
-                <Controls:Tile Title="Images" Style="{StaticResource LargeTileStyle}" Background="DarkViolet" />
-                <Controls:Tile Title="Page Content" Style="{StaticResource LargeTileStyle}" Background="Red" />
-                <Controls:Tile Title="Contact Information" Style="{StaticResource LargeTileStyle}" Background="DeepSkyBlue" />
-            </WrapPanel>
-        </Grid>
-    </ScrollViewer>
+    <!--<Grid>
+        <ScrollViewer x:Name="MenuSection" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="87*"/>
+                    <ColumnDefinition Width="430*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="83*"/>
+                    <RowDefinition Height="259*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="1" Grid.Column="1" Width="1350" Height="455" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Controls:Tile Title="Reviews" Style="{StaticResource LargeTileStyle}" Background="#33cc33" Margin="3" Cursor="Hand" Command="{Binding ReviewsCommand}"/>
+                    <Controls:Tile Title="Images" Style="{StaticResource LargeTileStyle}"  Margin="3" Background="#33ccff" Command="{Binding TestCommand}" />
+                    <Controls:Tile Title="Homepage Content" Style="{StaticResource LargeTileStyle}" Background="#cc00ff" IsEnabled="False"  />
+                    <Controls:Tile Title="Reviews" Style="{StaticResource SmallTileStyle}" Background="#00cc99" />
+                    <Controls:Tile Title="Images" Style="{StaticResource SmallTileStyle}" Background="#ff6600" />
+                    <Controls:Tile Title="Customers" Style="{StaticResource LargeTileStyle}" Background="#ffcc00" />
+                    <Controls:Tile Title="Manage Costs" Style="{StaticResource SmallTileStyle}" Background="#cc00ff" />
+                    <Controls:Tile Title="Manage Prices" Style="{StaticResource SmallTileStyle}" Background="#1E90FF" />
+                    <Controls:Tile Title="Bookings" Style="{StaticResource LargeTileStyle}" Background="#ff0066" />
+                    <Controls:Tile Title="Website" Style="{StaticResource LargeTileStyle}" Background="#990099" Click="WebsiteTile_Click" />
+                </WrapPanel>
+            </Grid>
+        </ScrollViewer>
+        <StackPanel x:Name="ContentSection" Visibility="Collapsed">
+            <ContentControl x:Name="Content" Content="{Binding SelectedViewModel}" />
+        </StackPanel>
+    </Grid>-->
+    <DockPanel LastChildFill="True">
+        <StackPanel x:Name="navigation" DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="Test" Width="100" Margin="0 0 10 0" Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding TestCommand}" />
+            <Button Content="Reviews" Width="100" Margin="10 0 10 0" Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding ReviewsCommand}" />
+        </StackPanel>
+        <ContentControl x:Name="Content" DockPanel.Dock="Top" Margin="0 10 0 0" Content="{Binding SelectedViewModel}"/>
+    </DockPanel>
 </UserControl>
